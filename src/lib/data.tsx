@@ -20,6 +20,7 @@ import LogoBootstrap from "/public/images/logos/Bootstrap.svg";
 import LogoFpt from "/public/images/fpt-sw.png";
 
 import ProjectWorkhive from "/public/images/workhive.jpg";
+import ProjectWH from "/public/images/WH.jpeg";
 import ProjectJobee from "/public/images/jobee.jpeg";
 import ProjectKoishop from "/public/images/koishop.jpeg";
 
@@ -197,7 +198,7 @@ export const PROJECTS: ProjectDetails[] = [
     description:
       "WorkHive was developed as a groundbreaking solution for managing and booking coworking spaces.",
     url: "https://workhive.io.vn/",
-    previewImage: ProjectWorkhive,
+    previewImage: ProjectWH,
     technologies: [
       "React",
       "Typescript",
