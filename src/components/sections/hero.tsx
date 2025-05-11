@@ -26,10 +26,11 @@ const HeroSection = () => {
               <Image
                 src={KhanhAVT}
                 alt="Headshot of Khanh"
-                className="absolute z-10 h-[280px] w-[240px] border-8 border-gray max-md:left-5 md:left-0 md:top-0 md:h-[320px] md:w-[280px]"
+                className="absolute z-10 h-[280px] w-[240px] rounded-xl border-8 border-gray shadow-lg transition-transform duration-300 hover:scale-105 max-md:left-5 md:left-0 md:top-0 md:h-[320px] md:w-[280px]"
                 style={{ objectFit: "cover" }}
-              ></Image>
-              <div className="absolute h-[280px] w-[280px] border-8 border-transparent bg-gray-200 max-md:top-5 md:bottom-0 md:right-0 md:h-[320px] md:w-[280px]"></div>
+                priority
+              />
+              <div className="absolute h-[280px] w-[280px] rounded-xl border-8 border-transparent bg-gradient-to-br from-blue-200 to-purple-200 dark:from-blue-500/30 dark:to-purple-500/30 max-md:top-5 md:bottom-0 md:right-0 md:h-[320px] md:w-[280px]"></div>
             </div>
           </motion.div>
 
@@ -42,15 +43,26 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
+              {" "}
               <Typography variant="h1">
-                Hi, I&apos;m Quang Khanh{" "}
+                Hi, I&apos;m{" "}
+                <span className="animated-gradient-text font-bold">
+                  Quang Khanh
+                </span>{" "}
                 <span className="inline-block animate-waving-hand">👋</span>
               </Typography>
-              <Typography>
-                I am a Frontend Developer passionate about creating modern,
-                high-performance web applications with a strong focus on UI/UX.
-                I constantly seek innovative ways to enhance user experience by
-                integrating cutting-edge technologies and thoughtful design
+              <Typography className="text-gray-700 dark:text-gray-300">
+                I am a{" "}
+                <span className="font-medium text-blue-600 dark:text-blue-400">
+                  Frontend Developer
+                </span>{" "}
+                passionate about creating modern, high-performance web
+                applications with a strong focus on{" "}
+                <span className="font-medium text-purple-600 dark:text-purple-400">
+                  UI/UX
+                </span>
+                . I constantly seek innovative ways to enhance user experience
+                by integrating cutting-edge technologies and thoughtful design
                 principles.
               </Typography>
             </motion.div>{" "}
