@@ -19,7 +19,7 @@ import LogoBootstrap from "/public/images/logos/Bootstrap.svg";
 
 import LogoFpt from "/public/images/fpt-sw.png";
 
-import ProjectWorkhive from "/public/images/workhive.jpg";
+import ProjectWorkhive from "/public/images/workhive.jpeg";
 import ProjectJobee from "/public/images/jobee.jpeg";
 import ProjectKoishop from "/public/images/koishop.jpeg";
 

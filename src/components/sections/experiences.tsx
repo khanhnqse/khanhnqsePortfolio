@@ -9,7 +9,9 @@ import RevealOnScroll from "../animata/scroll/reveal";
 
 const ExperienceSection = () => {
   return (
-    <Container className="bg-gray-50">      <RevealOnScroll threshold={0.2}>
+    <Container className="bg-gray-50">
+      {" "}
+      <RevealOnScroll threshold={0.2}>
         <div className="flex flex-col items-center gap-4">
           <div className="self-center">
             <Tag label="Experience" />
@@ -19,9 +21,13 @@ const ExperienceSection = () => {
           </Typography>
         </div>
       </RevealOnScroll>
-
       {EXPERIENCES?.map((experience, index) => (
-        <RevealOnScroll key={index} threshold={0.1} delay={0.3 * index} direction="up">
+        <RevealOnScroll
+          key={index}
+          threshold={0.1}
+          delay={0.3 * index}
+          direction="up"
+        >
           <ExperienceDetails {...experience} />
         </RevealOnScroll>
       ))}

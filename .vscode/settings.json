@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "portfolio",
-        "buildEffect"
+        "buildEffect",
+        "fix vercel"
     ]
 }
