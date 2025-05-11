@@ -23,8 +23,7 @@ module.exports = {
           900: 'rgb(var(--app-gray-900) / <alpha-value>)',
           950: 'rgb(var(--app-gray-950) / <alpha-value>)',
         },
-      },
-      keyframes: {
+      },      keyframes: {
         open: {
           '0%': {
             opacity: 1,
@@ -47,15 +46,37 @@ module.exports = {
           '60%': { transform: 'rotate(0.0deg)' },
           '100%': { transform: 'rotate(0.0deg)' },
         },
+        meteor: {
+          '0%': { transform: 'translateY(-20%) translateX(-50%)' },
+          '100%': { transform: 'translateY(300%) translateX(-50%)' },
+        },
+        'pop-blob': {
+          '0%': { transform: 'scale(1)' },
+          '33%': { transform: 'scale(1.2)' },
+          '66%': { transform: 'scale(0.8)' },
+          '100%': { transform: 'scale(1)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
       },
       animation: {
         'drawer-open': 'open 0.3s ease-in-out',
         'drawer-close': 'close 0.3s ease-in-out',
         'waving-hand': 'waving 2s linear 3',
+        'meteor': 'meteor var(--duration) var(--delay) ease-in-out infinite',
+        'pop-blob': 'pop-blob 5s infinite',
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.5s ease-in-out',
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 
 // Ref :: https://twitter.com/steventey/status/1677339375645126659

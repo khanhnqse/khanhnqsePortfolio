@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image';
 
 import { TestimonialDetails as TestimonialDetailsProps } from '@/lib/types';
