@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/images/workhive.jpeg", "destination": "/images/workhive.jpg" }
+  ]
+}
