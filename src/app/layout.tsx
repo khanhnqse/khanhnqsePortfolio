@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 const title = "Nguyen Quang Khanh | Front End Developer.";
 const description =
   "I am a Frontend Developer passionate about creating modern, high-performance web applications with a strong focus on UI/UX.";
-const url = "localhost:3000";
+const url = "https://khanhnqse-portfolio.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: title,
     images: [
       {
-        url: "/images/khanh.jpg",
+        url: `${url}/images/khanh.jpg`,
       },
     ],
   },

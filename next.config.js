@@ -4,6 +4,10 @@ const nextConfig = {
   generateBuildId: async () => {
     return 'build-' + new Date().getTime();
   },
+  images: {
+    domains: ['khanhnqse-portfolio.vercel.app'],
+    unoptimized: true
+  },
   experimental: {
     outputFileTracingExcludes: {
       '*': [
