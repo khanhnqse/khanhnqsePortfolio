@@ -127,7 +127,7 @@ const AboutMeSection = () => {
             </div>
             <Typography className="text-gray-700 dark:text-white">
               One last thing, I&apos;m available for freelance work, so feel
-              free to reach out and say hello! I promise I don&apos;t bite 😉
+              free to reach out and say hello! 😉
             </Typography>
           </div>
         </RevealOnScroll>
