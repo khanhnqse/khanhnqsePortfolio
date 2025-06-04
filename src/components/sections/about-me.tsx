@@ -18,8 +18,8 @@ const AboutMeSection = () => {
       id="about"
     >
       <BlurryBlob
-        firstBlobColor="bg-blue-200"
-        secondBlobColor="bg-purple-200"
+        firstBlobColor="bg-blue-200 dark:bg-blue-500"
+        secondBlobColor="bg-purple-200 dark:bg-purple-700"
       />
 
       <div className="relative z-10 self-center">
