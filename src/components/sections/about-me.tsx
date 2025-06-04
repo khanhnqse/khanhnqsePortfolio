@@ -13,7 +13,10 @@ import RevealOnScroll from "../animata/scroll/reveal";
 
 const AboutMeSection = () => {
   return (
-    <Container className="relative overflow-hidden bg-gray-50" id="about">
+    <Container
+      className="relative overflow-hidden bg-gray-50 transition-colors duration-500"
+      id="about"
+    >
       <BlurryBlob
         firstBlobColor="bg-blue-200"
         secondBlobColor="bg-purple-200"
@@ -23,26 +26,29 @@ const AboutMeSection = () => {
         <Tag label="About me" />
       </div>
 
-      <div className="relative z-10 flex w-full flex-col justify-between gap-12 md:flex-row">
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center gap-8 md:flex-row md:items-start md:gap-16">
         {/* Image */}
         <RevealOnScroll direction="right" threshold={0.2}>
-          <div className="flex justify-center md:order-first md:justify-end">
-            <div className="relative h-[380px] w-[320px] md:h-[460px] md:w-[380px] lg:h-[520px] lg:w-[440px]">
-              <Image
-                src={KhanhFullPose}
-                alt="Fullpose of Sagar"
-                className="absolute z-10 h-[360px] w-[280px] border-8 border-gray-50 max-md:left-5 md:right-0 md:top-0 md:h-[420px] md:w-[340px] lg:h-[480px] lg:w-[400px]"
-                style={{ objectFit: "cover" }}
-              ></Image>
-              <div className="absolute h-[360px] w-[320px] border-8 border-transparent bg-gray-200 max-md:top-5 md:bottom-0 md:left-0 md:h-[420px] md:w-[340px] lg:h-[480px] lg:w-[400px]"></div>
+          <div className="flex w-full justify-center md:w-auto md:justify-end">
+            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-200/60 via-purple-200/60 to-pink-200/60 p-1 shadow-xl dark:from-blue-500/20 dark:via-purple-700/20 dark:to-pink-400/20">
+              <div className="overflow-hidden rounded-2xl bg-white dark:bg-gray-800">
+                <Image
+                  src={KhanhFullPose}
+                  alt="Fullpose of Sagar"
+                  className="h-[320px] w-[260px] object-cover transition-transform duration-500 group-hover:scale-105 md:h-[400px] md:w-[320px] lg:h-[440px] lg:w-[360px]"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
             </div>
           </div>
         </RevealOnScroll>
 
         {/* Content */}
         <RevealOnScroll direction="up" threshold={0.2} delay={0.2}>
-          <div className="flex max-w-xl flex-col gap-6">
-            <Typography variant="h3">
+          <div className="animate-fade-in-up flex w-full max-w-xl flex-col gap-6 rounded-2xl border border-gray-100 p-6 shadow-lg transition-colors duration-500 md:p-10">
+            {/* Accent bar */}
+            <div className="mb-2 h-1 w-16 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 dark:from-blue-500 dark:via-purple-500 dark:to-pink-500" />
+            <Typography variant="h3" className="text-gray-900 dark:text-white">
               Curious about me? Here you have it:
             </Typography>
             {/* <Typography>
@@ -86,22 +92,40 @@ const AboutMeSection = () => {
               </Link>
               . I&apos;d love to connect and learn from you!
             </Typography>
-            <Typography>Finally, some quick bits about me.</Typography>
+            <Typography className="text-gray-700 dark:text-white">
+              Finally, some quick bits about me.
+            </Typography>
             <div className="flex flex-col gap-2 md:flex-row md:gap-6">
-              <ul className="flex list-inside list-disc flex-col gap-2">
-                <Typography component="li">
+              <ul className="animate-fade-in-up flex list-inside list-disc flex-col gap-2 delay-100">
+                <Typography
+                  component="li"
+                  className="text-gray-700 dark:text-white"
+                >
                   Software Engineering student @ FPT University (since 2021)
                 </Typography>
-                <Typography component="li">Full time freelancer</Typography>
+                <Typography
+                  component="li"
+                  className="text-gray-700 dark:text-white"
+                >
+                  Full time freelancer
+                </Typography>
               </ul>
-              <ul className="flex list-inside list-disc flex-col gap-2">
-                <Typography component="li">Front-end focused</Typography>
-                <Typography component="li">
+              <ul className="animate-fade-in-up flex list-inside list-disc flex-col gap-2 delay-200">
+                <Typography
+                  component="li"
+                  className="text-gray-700 dark:text-white"
+                >
+                  Front-end focused
+                </Typography>
+                <Typography
+                  component="li"
+                  className="text-gray-700 dark:text-white"
+                >
                   Open to job opportunities and new collaborations
                 </Typography>
               </ul>
-            </div>{" "}
-            <Typography>
+            </div>
+            <Typography className="text-gray-700 dark:text-white">
               One last thing, I&apos;m available for freelance work, so feel
               free to reach out and say hello! I promise I don&apos;t bite 😉
             </Typography>
