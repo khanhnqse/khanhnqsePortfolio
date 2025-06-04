@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import KhanhFullPose from "/public/images/khanhFull.jpg";
+import KhanhFullPose from "/public/images/khanhFull1.jpg";
 import Tag from "@/components/data-display/tag";
 import Container from "@/components/layout/container";
 import Typography from "@/components/general/typography";
