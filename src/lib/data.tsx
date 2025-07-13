@@ -16,16 +16,11 @@ import LogoFigma from "/public/images/logos/icon-figma.svg";
 import LogoPostman from "/public/images/logos/postman.svg";
 import LogoGit from "/public/images/logos/icon-git.svg";
 import LogoBootstrap from "/public/images/logos/Bootstrap.svg";
-
 import LogoFpt from "/public/images/fpt-sw.png";
-
 import ProjectWH from "/public/images/WH.jpeg";
 import ProjectJobee from "/public/images/jobee.jpeg";
-import ProjectKoishop from "/public/images/koishop.jpeg";
-
-// import AvatarKrisztian from "/public/images/avatar-krisztian.png";
-// import AvatarEugen from "/public/images/avatar-eugen.png";
-// import AvatarDummy from "/public/images/avatar-dummy.svg";
+import ProjectWeatherHub from "/public/images/weatherhub.png";
+import ProjectMinnaGo from "/public/images/minnago.png";
 
 import {
   ExperienceDetails,
@@ -196,7 +191,7 @@ export const PROJECTS: ProjectDetails[] = [
     name: "WorkHive",
     description:
       "WorkHive was developed as a groundbreaking solution for managing and booking coworking spaces.",
-    url: "https://workhive.io.vn/",
+    url: "https://workhive-clients.vercel.app/",
     previewImage: ProjectWH,
     technologies: [
       "React",
@@ -228,18 +223,50 @@ export const PROJECTS: ProjectDetails[] = [
       "Firebase",
     ],
   },
+  // {
+  //   name: "Koishop",
+  //   description:
+  //     "Koi Fish Management & E-commerce Platform. Koishop is a platform that allows users to manage and sell koi fish.",
+  //   url: "#",
+  //   previewImage: ProjectKoishop,
+  //   technologies: [
+  //     "React",
+  //     "Next.js",
+  //     "Typescript",
+  //     "Tailwindcss",
+  //     "Ant Design",
+  //   ],
+  // },
+
   {
-    name: "Koishop",
+    name: "WeatherHub - Modern Weather Application",
     description:
-      "Koi Fish Management & E-commerce Platform. Koishop is a platform that allows users to manage and sell koi fish.",
-    url: "#",
-    previewImage: ProjectKoishop,
+      "Weather Hub is a weather web app built with Next.js and OpenWeatherMap API, featuring an AI chatbot for natural language weather queries.",
+    url: "https://my-weather-beige.vercel.app/",
+    previewImage: ProjectWeatherHub,
     technologies: [
       "React",
       "Next.js",
-      "Typescript",
-      "Tailwindcss",
-      "Ant Design",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Lucide Icons",
+      "OpenWeatherMap API",
+      "Gemini API",
+    ],
+  },
+  {
+    name: "MinnaGo - Anime & Manga Discovery App",
+    description:
+      "MinnaGo is a personal web app project built with Next.js and the MyAnimeList API, allowing users to explore anime, manga, and community content. It features a modern UI, responsive design, and smooth animations.",
+    url: "https://minna-go.vercel.app/",
+    previewImage: ProjectMinnaGo,
+    technologies: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
     ],
   },
 ];
