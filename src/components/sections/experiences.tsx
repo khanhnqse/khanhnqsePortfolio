@@ -9,7 +9,7 @@ import RevealOnScroll from "../animata/scroll/reveal";
 
 const ExperienceSection = () => {
   return (
-    <Container className="bg-gray-50">
+    <Container className="bg-gray-50 dark:bg-gray-900/50">
       {" "}
       <RevealOnScroll threshold={0.2}>
         <div className="flex flex-col items-center gap-4">
