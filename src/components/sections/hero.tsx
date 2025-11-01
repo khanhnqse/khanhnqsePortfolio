@@ -12,9 +12,9 @@ import AnimatedBeam from "../animata/background/animated-beam";
 
 const HeroSection = () => {
   return (
-    <AnimatedBeam className="py-12 md:py-16">
+    <AnimatedBeam className="py-16 md:py-20 lg:py-24">
       <Container id="hero">
-        <div className="flex flex-col gap-12 md:flex-row">
+        <div className="flex flex-col gap-12 md:flex-row md:gap-16 lg:gap-20">
           {/* Image */}
           <motion.div
             className="flex items-center justify-center md:order-last md:flex-grow md:justify-end"

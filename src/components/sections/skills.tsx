@@ -21,7 +21,7 @@ const SkillsSection = () => {
           </Typography>
         </div>
       </RevealOnScroll>{" "}
-      <div className="grid grid-cols-3 gap-y-4 md:grid-cols-6 md:gap-y-8 lg:grid-cols-8 lg:gap-y-12">
+      <div className="grid grid-cols-3 gap-x-4 gap-y-8 md:grid-cols-6 md:gap-x-6 md:gap-y-12 lg:grid-cols-8 lg:gap-x-8 lg:gap-y-16">
         {TECHNOLOGIES.map((technology, index) => (
           <motion.div
             key={index}
