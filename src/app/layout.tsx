@@ -54,10 +54,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} bg-gray text-gray-600 antialiased`}>
+      <body className={`${inter.className} bg-gray text-gray-600 antialiased overflow-x-hidden`}>
         <Providers>
           <Header />
-          <main className="flex min-h-screen w-full flex-col">{children}</main>
+          <main className="flex min-h-screen w-full flex-col overflow-x-hidden">{children}</main>
           <Footer />
         </Providers>
       </body>

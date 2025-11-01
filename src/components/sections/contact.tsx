@@ -56,7 +56,7 @@ const ContactSection = () => {
   };
 
   return (
-    <Container id="contact" className="bg-gray-50 py-12">
+    <Container id="contact" className="bg-gray-50 py-20 md:py-24 lg:py-28 dark:bg-gray-900/50">
       <motion.div
         className="mb-8 flex flex-col items-center gap-4"
         initial={{ opacity: 0, y: 40 }}
@@ -76,13 +76,13 @@ const ContactSection = () => {
       </motion.div>
 
       <motion.div
-        className="from-primary-50 to-primary-100 border-primary-100 mx-auto flex w-full max-w-2xl flex-col gap-8 rounded-2xl border bg-gradient-to-br via-white px-4 py-8 shadow-xl dark:border-neutral-800 dark:from-neutral-900 dark:via-neutral-900/90 dark:to-neutral-800 md:px-10 md:py-10"
+        className="from-primary-50 to-primary-100 border-primary-100 mx-auto flex w-full max-w-2xl flex-col gap-8 rounded-2xl border bg-gradient-to-br via-white px-6 py-10 shadow-xl dark:border-neutral-800 dark:from-neutral-900 dark:via-neutral-900/90 dark:to-neutral-800 md:px-12 md:py-12"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
           {[
             { icon: Mail, value: email, type: "email", label: "Email" },
             { icon: Phone, value: phone, type: "phone", label: "Phone" },

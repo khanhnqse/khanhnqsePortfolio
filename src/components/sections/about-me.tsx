@@ -14,7 +14,7 @@ import RevealOnScroll from "../animata/scroll/reveal";
 const AboutMeSection = () => {
   return (
     <Container
-      className="relative overflow-hidden bg-gray-50 transition-colors duration-500"
+      className="relative overflow-hidden bg-gray-50 transition-colors duration-500 dark:bg-gray-900/50"
       id="about"
     >
       <BlurryBlob
@@ -45,7 +45,7 @@ const AboutMeSection = () => {
 
         {/* Content */}
         <RevealOnScroll direction="up" threshold={0.2} delay={0.2}>
-          <div className="animate-fade-in-up flex w-full max-w-xl flex-col gap-6 rounded-2xl border border-gray-100 p-6 shadow-lg transition-colors duration-500 md:p-10">
+          <div className="animate-fade-in-up flex w-full max-w-xl flex-col gap-6 rounded-2xl border border-gray-100 bg-white p-8 shadow-xl transition-all duration-500 hover:shadow-2xl dark:border-gray-800 dark:bg-gray-900 md:p-12">
             {/* Accent bar */}
             <div className="mb-2 h-1 w-16 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 dark:from-blue-500 dark:via-purple-500 dark:to-pink-500" />
             <Typography variant="h3" className="text-gray-900 dark:text-white">

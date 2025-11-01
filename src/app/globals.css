@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth Scroll Behavior */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* Account for sticky header (~80px) */
+  }
+}
+
 /* Animated Gradient Text */
 @keyframes gradient-animation {
   0% {
