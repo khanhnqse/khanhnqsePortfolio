@@ -82,7 +82,7 @@ const ContactSection = () => {
         transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="grid grid-cols-1 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
           {[
             { icon: Mail, value: email, type: "email", label: "Email" },
             { icon: Phone, value: phone, type: "phone", label: "Phone" },
