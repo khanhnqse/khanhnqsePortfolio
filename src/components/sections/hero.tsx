@@ -22,15 +22,15 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="relative h-[300px] w-[280px] md:h-[360px] md:w-[320px]">
+            <div className="relative h-[320px] w-[300px] md:h-[380px] md:w-[340px] lg:h-[400px] lg:w-[360px]">
               <Image
                 src={KhanhAVT}
                 alt="Headshot of Khanh"
-                className="absolute z-10 h-[280px] w-[240px] rounded-xl border-8 border-gray shadow-lg transition-transform duration-300 hover:scale-105 max-md:left-5 md:left-0 md:top-0 md:h-[320px] md:w-[280px]"
+                className="absolute z-10 h-[300px] w-[260px] rounded-xl border-8 border-gray shadow-lg transition-transform duration-300 hover:scale-105 max-md:left-5 md:left-0 md:top-0 md:h-[340px] md:w-[300px] lg:h-[360px] lg:w-[320px]"
                 style={{ objectFit: "cover" }}
                 priority
               />
-              <div className="absolute h-[280px] w-[280px] rounded-xl border-8 border-transparent bg-gradient-to-br from-blue-200 to-purple-200 dark:from-blue-500/30 dark:to-purple-500/30 max-md:top-5 md:bottom-0 md:right-0 md:h-[320px] md:w-[280px]"></div>
+              <div className="absolute h-[300px] w-[300px] rounded-xl border-8 border-transparent bg-gradient-to-br from-blue-200 to-purple-200 dark:from-blue-500/30 dark:to-purple-500/30 max-md:top-5 md:bottom-0 md:right-0 md:h-[340px] md:w-[300px] lg:h-[360px] lg:w-[320px]"></div>
             </div>
           </motion.div>
 
