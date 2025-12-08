@@ -294,3 +294,27 @@ export const TESTIMONIALS: TestimonialDetails[] = [
       "Sagar was extremely easy and pleasant to work with and he truly cares about the project being a success. Sagar has a high level of knowledge and was able to work on my MERN stack application without any issues.",
   },
 ];
+
+export const CERTIFICATES = [
+  {
+    name: "Meta Front-End Developer Professional Certificate",
+    issuer: "Coursera",
+    date: "2023",
+    url: "https://www.coursera.org/account/accomplishments/professional-cert/...",
+    image: "/images/certificates/meta-frontend.png", // Placeholder
+  },
+  {
+    name: "React - The Complete Guide 2023",
+    issuer: "Udemy",
+    date: "2023",
+    url: "https://www.udemy.com/certificate/...",
+    image: "/images/certificates/react-udemy.png", // Placeholder
+  },
+  {
+    name: "JavaScript Algorithms and Data Structures",
+    issuer: "freeCodeCamp",
+    date: "2022",
+    url: "https://www.freecodecamp.org/certification/...",
+    image: "/images/certificates/fcc-js.png", // Placeholder
+  },
+];

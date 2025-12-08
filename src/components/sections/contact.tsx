@@ -1,52 +1,32 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Mail, Phone } from "lucide-react";
-// import Link from 'next/link';
-import { motion } from "framer-motion";
+import { Copy, Mail, Phone, Check } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import SocialIcons from "@/components/data-display/social-icons";
 import Tag from "@/components/data-display/tag";
-import IconButton from "@/components/general/icon-button";
 import Typography from "@/components/general/typography";
 import Container from "@/components/layout/container";
-import useWindowSize from "@/hooks/use-window-size";
-import { copyTextToClipboard } from "@/lib/utils";
+import { copyTextToClipboard, cn } from "@/lib/utils";
 
 let email = "khanhqn03@gmail.com";
 let phone = "033.436.3339";
 
 type CopyValue = "email" | "phone";
 
-// Animated Copied! tooltip component
-const CopiedTooltip = () => (
-  <motion.div
-    initial={{ opacity: 0, y: 6 }}
-    animate={{ opacity: 1, y: -6 }}
-    exit={{ opacity: 0, y: 6 }}
-    transition={{ duration: 0.2 }}
-    className="absolute left-1/2 top-full z-10 mt-1 -translate-x-1/2 rounded border border-neutral-700 bg-neutral-800 px-2 py-0.5 text-xs text-white shadow"
-  >
-    Copied!
-  </motion.div>
-);
-
 const ContactSection = () => {
-  const { width } = useWindowSize();
   const [isCopied, setIsCopied] = useState(false);
-  const [copiedValueType, setCopiedValueType] = useState<CopyValue | null>(
-    null
-  );
+  const [copiedValueType, setCopiedValueType] = useState<CopyValue | null>(null);
 
   const handleCopyClick = async (text: string, type: CopyValue) => {
     try {
       await copyTextToClipboard(text);
       setIsCopied(true);
       setCopiedValueType(type);
-      let timoutId: any = setTimeout(() => {
+      setTimeout(() => {
         setIsCopied(false);
         setCopiedValueType(null);
-        clearTimeout(timoutId);
       }, 1500);
     } catch (error) {
       setIsCopied(false);
@@ -56,102 +36,96 @@ const ContactSection = () => {
   };
 
   return (
-    <Container id="contact" className="bg-gray-50 py-12">
-      <motion.div
-        className="mb-8 flex flex-col items-center gap-4"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
+    <Container id="contact" className="py-20 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="relative z-10 flex flex-col items-center gap-6 text-center mb-12">
         <Tag label="Get in touch" />
-
-        <Typography
-          variant="subtitle"
-          className="max-w-xl text-center dark:text-white"
-        >
-          What’s next? Feel free to reach out if you are looking for a
-          developer, have a query, or simply want to connect.
+        <Typography variant="h2" className="max-w-2xl font-bold">
+          Let&apos;s build something amazing together
         </Typography>
-      </motion.div>
+        <Typography variant="body1" className="max-w-xl text-gray-600 dark:text-gray-300">
+          Whether you have a question, a project idea, or just want to say hi, feel free to reach out!
+        </Typography>
+      </div>
 
-      <motion.div
-        className="from-primary-50 to-primary-100 border-primary-100 mx-auto flex w-full max-w-2xl flex-col gap-8 rounded-2xl border bg-gradient-to-br via-white px-4 py-8 shadow-xl dark:border-neutral-800 dark:from-neutral-900 dark:via-neutral-900/90 dark:to-neutral-800 md:px-10 md:py-10"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {[
-            { icon: Mail, value: email, type: "email", label: "Email" },
-            { icon: Phone, value: phone, type: "phone", label: "Phone" },
-          ].map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.type}
-                className="border-primary-100 dark:border-primary-900 from-primary-100/60 to-primary-200/60 dark:to-primary-900/30 group relative flex w-full min-w-0 flex-col items-center gap-2 overflow-hidden rounded-xl border bg-gradient-to-br via-white/80 px-4 py-6 shadow-sm transition-shadow duration-200 hover:shadow-lg dark:from-neutral-900 dark:via-neutral-900/80"
-                initial={{ opacity: 0, y: 20, scale: 0.99 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                whileHover={{ scale: 1.04, borderColor: "#ffffff" }}
-                transition={{
-                  duration: 0.4,
-                  delay: idx * 0.08 + 0.2,
-                  ease: [0.25, 0.1, 0.25, 1],
-                }}
-                viewport={{ once: true, amount: 0.1 }}
-                tabIndex={0}
-              >
-                <div
-                  className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{
-                    background:
-                      "radial-gradient(circle at 70% 30%, #3b82f6 0%, transparent 70%)",
-                  }}
-                />
-                <div className="z-10 mb-2 flex items-center gap-2">
-                  <Icon className="text-primary-500 h-7 w-7 drop-shadow-[0_1px_4px_rgba(59,130,246,0.15)]" />
-                  <span className="text-primary-600 dark:text-primary-300 text-sm font-semibold">
-                    {item.label}
-                  </span>
-                </div>
-                <Typography
-                  variant="h2"
-                  className="text-primary-800 dark:text-primary-100 z-10 mb-2 w-full truncate break-all text-center text-lg font-semibold"
-                  style={{ wordBreak: "break-all" }}
-                >
-                  {item.value}
-                </Typography>
-                <span className="relative z-10">
-                  <IconButton
-                    size={width && width < 768 ? "md" : "lg"}
-                    onClick={() =>
-                      handleCopyClick(
-                        item.value.replace(" ", ""),
-                        item.type as CopyValue
-                      )
-                    }
-                    showTooltip={isCopied && copiedValueType === item.type}
-                    className="bg-primary-100 hover:bg-primary-200 border-primary-200 text-primary-700 ml-1 border shadow-sm"
-                  >
-                    <Copy />
-                  </IconButton>
-                  {isCopied && copiedValueType === item.type && (
-                    <CopiedTooltip />
-                  )}
-                </span>
-              </motion.div>
-            );
-          })}
-        </div>
-        <div className="border-primary-100 dark:border-primary-900 flex flex-col items-center gap-2 border-t pt-2">
-          <Typography className="text-primary-600 dark:text-primary-300 text-center">
-            You may also find me on these platforms
-          </Typography>
-          <SocialIcons />
-        </div>
-      </motion.div>
+      <div className="relative z-10 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Email Card */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white/50 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+        >
+          <div className="flex flex-col items-center gap-4">
+            <div className="p-4 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+              <Mail className="w-8 h-8" />
+            </div>
+            <div className="text-center">
+              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Email me at</p>
+              <p className="text-lg font-bold text-gray-900 dark:text-white mt-1">{email}</p>
+            </div>
+            <button
+              onClick={() => handleCopyClick(email, "email")}
+              className="mt-2 flex items-center gap-2 px-4 dark:text-black py-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-medium"
+            >
+              {isCopied && copiedValueType === "email" ? (
+                <>
+                  <Check className="w-4 h-4 text-green-500" />
+                  <span className="text-green-500">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4" />
+                  <span>Copy Email</span>
+                </>
+              )}
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Phone Card */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white/50 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+        >
+          <div className="flex flex-col items-center gap-4">
+            <div className="p-4 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+              <Phone className="w-8 h-8" />
+            </div>
+            <div className="text-center">
+              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Call me at</p>
+              <p className="text-lg font-bold text-gray-900 dark:text-white mt-1">{phone}</p>
+            </div>
+            <button
+              onClick={() => handleCopyClick(phone, "phone")}
+              className="mt-2 flex items-center dark:text-black gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-medium"
+            >
+              {isCopied && copiedValueType === "phone" ? (
+                <>
+                  <Check className="w-4 h-4 text-green-500" />
+                  <span className="text-green-500">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4" />
+                  <span>Copy Phone</span>
+                </>
+              )}
+            </button>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="flex flex-col items-center gap-4 mt-16">
+        <Typography className="text-gray-600 dark:text-gray-400">
+          You may also find me on these platforms
+        </Typography>
+        <SocialIcons />
+      </div>
     </Container>
   );
 };

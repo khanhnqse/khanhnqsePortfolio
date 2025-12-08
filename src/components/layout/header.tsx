@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   Drawer,
@@ -20,8 +21,9 @@ import DownloadCV from "@/components/general/download-cv";
 import Typography from "@/components/general/typography";
 
 const Logo = () => (
-  <Typography variant="h3" className="font-bold">
-    {"khanhnqse"}
+  <Typography variant="h3" className="font-bold text-xl tracking-tighter">
+    khanhnqse
+    <span className="text-primary">.</span>
   </Typography>
 );
 
@@ -38,25 +40,31 @@ const Header = () => {
   }, [size, isOpen]);
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
       className={mergeClasses(
-        "sticky top-0 z-30 w-full border-b border-transparent bg-gray max-md:border-gray-100",
-        scrolled ? "bg-gray/50 backdrop-blur-xl md:border-gray-100" : ""
+        "fixed top-0 z-30 w-full transition-all duration-300",
+        scrolled ? "py-4" : "py-6"
       )}
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between p-4 md:px-8">
+      <div className={mergeClasses(
+        "mx-auto flex w-full max-w-7xl items-center justify-between px-4 md:px-8 transition-all duration-300",
+        scrolled ? "bg-white/70 dark:bg-black/70 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg rounded-2xl max-w-[95%] md:max-w-5xl py-3" : "bg-transparent"
+      )}>
         <Link href="/" noCustomization>
           <Logo />
         </Link>
         <div className="hidden items-center gap-6 md:flex">
-          <ul className="flex list-none items-center gap-6">
+          <ul className="flex list-none items-center gap-8">
             {NAV_LINKS.map((link, index) => (
               <li key={index}>
-                <Link href={link.href}>{link.label}</Link>
+                <Link href={link.href} className="text-sm font-medium hover:text-primary transition-colors">{link.label}</Link>
               </li>
             ))}
           </ul>
-          <div className="h-6 w-0.5 bg-gray-100"></div>
+          <div className="h-6 w-0.5 bg-border"></div>
           <div className="flex items-center gap-4">
             <ThemeSwitcher />
             <DownloadCV />
@@ -70,7 +78,7 @@ const Header = () => {
             </IconButton>
           </DrawerTrigger>
           <DrawerContent>
-            <div className="flex items-center justify-between border-b border-gray-100 p-4">
+            <div className="flex items-center justify-between border-b border-gray-100 p-4 dark:border-gray-800">
               <Logo />
               <DrawerClose asChild>
                 <IconButton>
@@ -78,7 +86,7 @@ const Header = () => {
                 </IconButton>
               </DrawerClose>
             </div>
-            <div className="border-b border-gray-100 p-4">
+            <div className="border-b border-gray-100 p-4 dark:border-gray-800">
               <ul className="flex list-none flex-col gap-4">
                 {NAV_LINKS.map((link, index) => (
                   <li key={index}>
@@ -107,7 +115,7 @@ const Header = () => {
           </DrawerContent>
         </Drawer>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
