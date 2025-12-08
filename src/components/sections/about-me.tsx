@@ -122,7 +122,7 @@ const AboutMeSection = () => {
           className="md:col-span-1 lg:col-span-1"
         >
           <Card className="h-full flex flex-col justify-center items-center gap-4 hover:border-blue-500/50 transition-colors">
-            <h4 className="font-bold">Let's Connect</h4>
+            <h4 className="font-bold">Let&apos;s Connect</h4>
             <div className="flex gap-4">
               <Link href={EXTERNAL_LINKS.GITHUB} noCustomization externalLink>
                 <div className="p-3 rounded-full bg-gray-100 dark:bg-white-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
