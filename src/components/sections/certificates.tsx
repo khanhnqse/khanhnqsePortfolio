@@ -29,7 +29,7 @@ const CertificateCard = ({
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl bg-white p-8 text-center shadow-sm transition-all hover:shadow-2xl dark:bg-gray-900/50"
+      className="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl bg-white p-8 text-center shadow-sm transition-all hover:shadow-2xl dark:bg-gray"
     >
       {/* Animated Gradient Border Effect */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 opacity-0 transition-opacity duration-500 group-hover:opacity-10"></div>
