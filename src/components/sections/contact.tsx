@@ -9,6 +9,7 @@ import Tag from "@/components/data-display/tag";
 import Typography from "@/components/general/typography";
 import Container from "@/components/layout/container";
 import { copyTextToClipboard, cn } from "@/lib/utils";
+import { Meteors } from "@/components/ui/meteors";
 
 let email = "khanhqn03@gmail.com";
 let phone = "033.436.3339";
@@ -38,7 +39,8 @@ const ContactSection = () => {
   return (
     <Container id="contact" className="py-20 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-20 pointer-events-none" />
+      <Meteors number={20} />
       
       <div className="relative z-10 flex flex-col items-center gap-6 text-center mb-12">
         <Tag label="Get in touch" />
@@ -50,71 +52,115 @@ const ContactSection = () => {
         </Typography>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="relative z-10 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Email Card */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          whileHover={{ scale: 1.02 }}
           viewport={{ once: true }}
-          className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white/50 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white/50 p-8 shadow-lg backdrop-blur-md transition-shadow hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:shadow-none"
         >
-          <div className="flex flex-col items-center gap-4">
-            <div className="p-4 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+          {/* Subtle gradient blob on hover */}
+          <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-blue-500/10 blur-[50px] transition-all duration-500 group-hover:bg-blue-500/20" />
+
+          <div className="flex flex-col items-center gap-4 relative z-10">
+            <motion.div 
+               whileHover={{ rotate: 15, scale: 1.1 }}
+               className="p-4 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+            >
               <Mail className="w-8 h-8" />
-            </div>
+            </motion.div>
             <div className="text-center">
               <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Email me at</p>
-              <p className="text-lg font-bold text-gray-900 dark:text-white mt-1">{email}</p>
+              <p className="text-lg font-bold text-gray-900 dark:text-white mt-1 break-all">{email}</p>
             </div>
             <button
               onClick={() => handleCopyClick(email, "email")}
-              className="mt-2 flex items-center gap-2 px-4 dark:text-black py-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-medium"
+              className="mt-2 flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-medium dark:text-white"
             >
-              {isCopied && copiedValueType === "email" ? (
-                <>
-                  <Check className="w-4 h-4 text-green-500" />
-                  <span className="text-green-500">Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4" />
-                  <span>Copy Email</span>
-                </>
-              )}
+              <AnimatePresence mode="wait">
+                {isCopied && copiedValueType === "email" ? (
+                  <motion.div
+                    key="copied"
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.5, opacity: 0 }}
+                    className="flex items-center gap-2"
+                  >
+                    <Check className="w-4 h-4 text-green-500" />
+                    <span className="text-green-500">Copied!</span>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="copy"
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.5, opacity: 0 }}
+                    className="flex items-center gap-2"
+                  >
+                    <Copy className="w-4 h-4 dark:text-black" />
+                    <span className="dark:text-black">Copy Email</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </motion.div>
 
         {/* Phone Card */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          whileHover={{ scale: 1.02 }}
           viewport={{ once: true }}
-          className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white/50 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md dark:border-white/10 dark:bg-white/5"
+          transition={{ type: "spring", stiffness: 400, damping: 30, delay: 0.1 }}
+          className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white/50 p-8 shadow-lg backdrop-blur-md transition-shadow hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:shadow-none"
         >
-          <div className="flex flex-col items-center gap-4">
-            <div className="p-4 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+           {/* Subtle gradient blob on hover */}
+           <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-emerald-500/10 blur-[50px] transition-all duration-500 group-hover:bg-emerald-500/20" />
+
+          <div className="flex flex-col items-center gap-4 relative z-10">
+            <motion.div
+              whileHover={{ rotate: 15, scale: 1.1 }}
+              className="p-4 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400"
+            >
               <Phone className="w-8 h-8" />
-            </div>
+            </motion.div>
             <div className="text-center">
               <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Call me at</p>
               <p className="text-lg font-bold text-gray-900 dark:text-white mt-1">{phone}</p>
             </div>
             <button
               onClick={() => handleCopyClick(phone, "phone")}
-              className="mt-2 flex items-center dark:text-black gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-medium"
+              className="mt-2 flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-100 dark:bg-gray-800 dark:text-black hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-medium dark:text-white"
             >
-              {isCopied && copiedValueType === "phone" ? (
-                <>
-                  <Check className="w-4 h-4 text-green-500" />
-                  <span className="text-green-500">Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4" />
-                  <span>Copy Phone</span>
-                </>
-              )}
+              <AnimatePresence mode="wait">
+                {isCopied && copiedValueType === "phone" ? (
+                  <motion.div
+                    key="copied"
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.5, opacity: 0 }}
+                    className="flex items-center gap-2"
+                  >
+                    <Check className="w-4 h-4 text-green-500" />
+                    <span className="text-green-500">Copied!</span>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="copy"
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.5, opacity: 0 }}
+                    className="flex items-center gap-2"
+                  >
+                    <Copy className="w-4 h-4 dark:text-black" />
+                    <span className="dark:text-black">Copy Phone</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </motion.div>

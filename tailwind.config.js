@@ -100,9 +100,13 @@ module.exports = {
           '60%': { transform: 'rotate(0.0deg)' },
           '100%': { transform: 'rotate(0.0deg)' },
         },
-        meteor: {
-          '0%': { transform: 'translateY(-20%) translateX(-50%)' },
-          '100%': { transform: 'translateY(300%) translateX(-50%)' },
+        "meteor-effect": {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: "0",
+          },
         },
         'pop-blob': {
           '0%': { transform: 'scale(1)' },
@@ -147,7 +151,7 @@ module.exports = {
         'drawer-open': 'open 0.3s ease-in-out',
         'drawer-close': 'close 0.3s ease-in-out',
         'waving-hand': 'waving 2s linear 3',
-        'meteor': 'meteor var(--duration) var(--delay) ease-in-out infinite',
+        "meteor-effect": "meteor-effect 5s linear infinite",
         'pop-blob': 'pop-blob 5s infinite',
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-in-out',

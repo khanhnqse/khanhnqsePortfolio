@@ -41,30 +41,39 @@ const Header = () => {
 
   return (
     <motion.header
+      className="fixed top-0 z-30 w-full"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={mergeClasses(
-        "fixed top-0 z-30 w-full transition-all duration-300",
-        scrolled ? "py-4" : "py-6"
-      )}
     >
-      <div className={mergeClasses(
-        "mx-auto flex w-full max-w-7xl items-center justify-between px-4 md:px-8 transition-all duration-300",
-        scrolled ? "bg-white/70 dark:bg-black/70 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg rounded-2xl max-w-[95%] md:max-w-5xl py-3" : "bg-transparent"
-      )}>
-        <Link href="/" noCustomization>
+      <motion.div
+        layout
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 30,
+        }}
+        className={mergeClasses(
+          "mx-auto flex w-full items-center justify-between px-4 md:px-8 transition-colors duration-300",
+          scrolled
+            ? "bg-white/70 dark:bg-black/70 backdrop-blur-sm border border-white/20 dark:border-white/10 shadow-lg rounded-full mt-4 max-w-[95%] md:max-w-4xl py-3"
+            : "bg-transparent max-w-7xl py-6"
+        )}
+      >
+        <Link href="/" noCustomization className="relative z-50">
           <Logo />
         </Link>
         <div className="hidden items-center gap-6 md:flex">
-          <ul className="flex list-none items-center gap-8">
+          <ul className="flex list-none items-center gap-6">
             {NAV_LINKS.map((link, index) => (
               <li key={index}>
-                <Link href={link.href} className="text-sm font-medium hover:text-primary transition-colors">{link.label}</Link>
+                <Link href={link.href} className="text-sm font-medium hover:text-primary transition-colors text-foreground/80 hover:text-foreground">
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
-          <div className="h-6 w-0.5 bg-border"></div>
+          <div className="h-6 w-px bg-border/50"></div>
           <div className="flex items-center gap-4">
             <ThemeSwitcher />
             <DownloadCV />
@@ -72,7 +81,7 @@ const Header = () => {
         </div>
 
         <Drawer open={isOpen} onOpenChange={setIsOpen}>
-          <DrawerTrigger asChild className="flex md:hidden">
+          <DrawerTrigger asChild className="flex md:hidden relative z-50">
             <IconButton>
               <Menu />
             </IconButton>
@@ -114,7 +123,7 @@ const Header = () => {
             </div>
           </DrawerContent>
         </Drawer>
-      </div>
+      </motion.div>
     </motion.header>
   );
 };

@@ -1,79 +1,78 @@
 "use client";
 
-import { ExternalLink, Award } from "lucide-react";
-import { motion } from "framer-motion";
+import { ExternalLink, Award, Building2 } from "lucide-react";
 import { CERTIFICATES } from "@/lib/data";
 import Tag from "@/components/data-display/tag";
 import Typography from "@/components/general/typography";
 import Container from "@/components/layout/container";
-
-const CertificateCard = ({
-  name,
-  issuer,
-  date,
-  url,
-  index,
-}: {
-  name: string;
-  issuer: string;
-  date: string;
-  url: string;
-  index: number;
-}) => {
-  return (
-    <motion.a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl bg-white p-8 text-center shadow-sm transition-all hover:shadow-2xl dark:bg-gray"
-    >
-      {/* Animated Gradient Border Effect */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 opacity-0 transition-opacity duration-500 group-hover:opacity-10"></div>
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-20"></div>
-      
-      {/* Shine Effect */}
-      <div className="absolute -inset-full top-0 block h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-40 group-hover:animate-shine dark:from-transparent dark:to-white/10" />
-
-      {/* Icon */}
-      <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gray-50 text-blue-600 shadow-inner transition-transform duration-500 group-hover:scale-110 group-hover:bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:group-hover:bg-gray-700">
-        <Award className="h-10 w-10" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10">
-        <Typography variant="h3" className="mb-2 text-lg font-bold text-gray-900 dark:text-white">
-          {name}
-        </Typography>
-        <Typography className="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">
-          {issuer} • {date}
-        </Typography>
-        
-        <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors group-hover:border-blue-200 group-hover:text-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:group-hover:text-blue-400">
-          View Credential <ExternalLink className="h-4 w-4" />
-        </div>
-      </div>
-    </motion.a>
-  );
-};
+import { Timeline } from "@/components/ui/timeline";
+import Image from "next/image";
+import Link from "next/link";
 
 const CertificateSection = () => {
+  // Sort certificates by date (newest first)
+  // Assuming date format is "YYYY" or similar that sorts string-wise correctly, 
+  // or we rely on the order in data.tsx.
+  
+  const timelineData = CERTIFICATES.map((cert) => ({
+    title: cert.date, // Use Year/Date as the timeline marker
+    content: (
+      <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+            {/* Image/Thumbnail */}
+            <div className="relative w-full md:w-48 h-32 md:h-32 shrink-0 rounded-lg overflow-hidden border border-neutral-100 dark:border-neutral-800">
+               {/* Use the placeholder image if available, or a fallback gradient */}
+               {cert.image ? (
+                 <Image 
+                   src={cert.image} 
+                   alt={cert.name} 
+                   fill 
+                   className="object-cover" 
+                 />
+               ) : (
+                <div className="w-full h-full bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center">
+                    <Award className="w-8 h-8 text-blue-500/50" />
+                </div>
+               )}
+            </div>
+
+            {/* Content */}
+            <div className="flex flex-col flex-1 gap-2">
+                <Typography variant="h3" className="text-xl font-bold leading-tight">
+                    {cert.name}
+                </Typography>
+                
+                <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400">
+                    <Building2 className="w-4 h-4" />
+                    <span>{cert.issuer}</span>
+                </div>
+
+                <div className="mt-4">
+                    <Link 
+                        href={cert.url} 
+                        target="_blank" 
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors"
+                    >
+                        Verify Credential <ExternalLink className="w-4 h-4" />
+                    </Link>
+                </div>
+            </div>
+        </div>
+      </div>
+    ),
+  }));
+
   return (
     <Container className="py-24">
-      <div className="flex flex-col items-center gap-4 mb-16">
+      <div className="mb-8 flex flex-col items-center gap-4">
         <Tag label="Certificates" />
         <Typography variant="subtitle" className="max-w-xl text-center">
-          Professional certifications and achievements:
+          My professional journey and achievements over the years.
         </Typography>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {CERTIFICATES.map((cert, index) => (
-          <CertificateCard key={index} {...cert} index={index} />
-        ))}
+      <div className="w-full">
+        <Timeline data={timelineData} />
       </div>
     </Container>
   );

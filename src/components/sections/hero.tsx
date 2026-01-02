@@ -10,8 +10,15 @@ import Typography from "@/components/general/typography";
 import Container from "@/components/layout/container";
 import { Spotlight } from "@/components/animata/background/spotlight";
 import { PROJECTS } from "@/lib/data";
+import { useTypingEffect } from "@/hooks/use-typing-effect";
 
 const HeroSection = () => {
+  const { displayedText, isComplete } = useTypingEffect({
+    text: "Frontend Developer",
+    duration: 100, // Slightly slower for emphasis
+    delay: 100,
+  });
+
   return (
     <div className="relative w-full overflow-hidden bg-background antialiased">
       <Spotlight
@@ -48,8 +55,11 @@ const HeroSection = () => {
               
               <Typography className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
                 I am a{" "}
-                <span className="font-semibold text-foreground">
-                  Frontend Developer
+                <span className="font-semibold text-foreground inline-flex items-center">
+                  {displayedText}
+                  {!isComplete && (
+                    <span className="ml-1 h-5 w-[2px] bg-primary animate-pulse" />
+                  )}
                 </span>{" "}
                 passionate about creating modern, high-performance web
                 applications with a strong focus on{" "}

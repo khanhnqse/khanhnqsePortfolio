@@ -297,24 +297,31 @@ export const TESTIMONIALS: TestimonialDetails[] = [
 
 export const CERTIFICATES = [
   {
-    name: "Meta Front-End Developer Professional Certificate",
-    issuer: "Coursera",
-    date: "2023",
-    url: "https://www.coursera.org/account/accomplishments/professional-cert/...",
-    image: "/images/certificates/meta-frontend.png", // Placeholder
+    name: "Honorable Student of Trimester",
+    issuer: "FPT University",
+    date: "Jun 2025",
+    url: "https://fap.fpt.edu.vn/temp/185598c3-b6d5-40d4-8f2c-37e5b5fc65b7.pdf",
+    image: "/images/certificates/honorable-student.jpg", // Placeholder
   },
   {
-    name: "React - The Complete Guide 2023",
-    issuer: "Udemy",
-    date: "2023",
-    url: "https://www.udemy.com/certificate/...",
-    image: "/images/certificates/react-udemy.png", // Placeholder
+    name: "Excellent Student of Trimester",
+    issuer: "FPT University",
+    date: "Mar 2024",
+    url: "https://fap.fpt.edu.vn/temp/185598c3-b6d5-40d4-8f2c-37e5b5fc65b7.pdf",
+    image: "/images/certificates/excellent-student.jpg", // Placeholder
   },
   {
-    name: "JavaScript Algorithms and Data Structures",
-    issuer: "freeCodeCamp",
-    date: "2022",
-    url: "https://www.freecodecamp.org/certification/...",
-    image: "/images/certificates/fcc-js.png", // Placeholder
+    name: "User Experience Research and Design",
+    issuer: "University of Michigan – Coursera",
+    date: "Nov 2024",
+    url: "https://www.coursera.org/account/accomplishments/specialization/certificate/NR64ATTSQBA0",
+    image: "/images/certificates/ux-research-design.png", // Placeholder
+  },
+  {
+    name: "Project Management Principles and Practices",
+    issuer: "University of California, Irvine – Coursera",
+    date: "May 2024",
+    url: "https://www.coursera.org/account/accomplishments/specialization/certificate/NLKEQVKH9UXE",
+    image: "/images/certificates/project-management.png", // Placeholder
   },
 ];
